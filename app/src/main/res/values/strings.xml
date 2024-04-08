@@ -1,0 +1,49 @@
+<resources>
+	<string name="app_name">secret-santa-jusan</string>
+	<string name="Зарегистрироваться">Зарегистрироваться</string>
+	<string name="Тайный_Санта">Тайный Санта</string>
+	<string name="Пока_что_Вы_не_участвуете_в_играх">Пока_что_Вы_не_участвуете_в_играх</string>
+	<string name="Создайте_или_вступите_в_игру">Создайте или вступите в игру, чтоб принять участие</string>
+	<string name="Регистрация">Регистрация</string>
+	<string name="Организуй_тайный_обмен_подарками_между_друзьями_или_коллегами">Организуй тайный обмен подарками между друзьями или коллегами</string>
+	<string name="Ваше_Имя">Ваше Имя</string>
+	<string name="Ваш_mail">Ваш E-mail</string>
+	<string name="или">или</string>
+	<string name="sign_googe">Sing up with Google</string>
+	<string name="Регистрируясь_вы_даете_согласие_на">Регистрируясь, вы даете согласие на</string>
+	<string name="обработку_персональных_данных">обработку персональных данных</string>
+	<string name="пароль">Ваш пароль</string>
+	<string name="Мои_игры">Мои игры</string>
+	<string name="Создай">Создать игру</string>
+	<string name="Название">Название Игры\n</string>
+	<string name="Войти">Войти</string>
+	<string name="Уже_есть_аккаунт">Уже есть аккаунт?</string>
+	<string name="Забыли_пароль">Забыли пароль?</string>
+	<string name="Вход">Вход</string>
+	<string name="Ваш_Логин">Ваш Логин</string>
+	<string name="Восстановление_доступа">Восстановление доступа</string>
+	<string name="Мы_отправим_ссылку_с_временным_паролем">Мы отправим ссылку с временным паролем на Вашу почту</string>
+	<string name="Восстановить">Восстановить</string>
+	<string name="Продолжая_Вы_даете_согласие_на">Продолжая, Вы даете согласие на</string>
+	<string name="Письмо_отправлено">Письмо отправлено</string>
+	<string name="Письмо_отправлено_v">Письмо отправлено.</string>
+	<string name="Не_пришло">Не пришло?</string>
+	<string name="Личные_Данные">Личные Данные</string>
+	<string name="Сохранить">Сохранить</string>
+	<string name="Пароль">Пароль</string>
+	<string name="Новый_Пароль">Новый пароль</string>
+	<string name="Повторите_пароль">Повторите пароль</string>
+	<string name="invitation">$Organizer invites you to the game</string>
+	<string name="fill_out_the_card">Fill out the card to take part in the game</string>
+	<string name="create_a_participant_card">Create a participant card</string>
+
+	<string name="create_game">Создать игру</string>
+	<string name="game_name">Название Игры</string>
+	<string name="game_id">Идентификатор</string>
+
+	<string name="add_participants">Добавить участников</string>
+	<string name="create_your_own_card">Создать свою карточку участника</string>
+	<string name="add_participants_manually">Добавить участников вручную</string>
+	<string name="invite_via_link">Пригласить по ссылке</string>
+
+</resources>
