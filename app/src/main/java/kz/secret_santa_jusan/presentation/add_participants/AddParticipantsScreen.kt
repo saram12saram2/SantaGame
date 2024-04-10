@@ -30,7 +30,7 @@ import kotlinx.parcelize.Parcelize
 import kz.secret_santa_jusan.R
 import kz.secret_santa_jusan.core.base.CoreBaseScreen
 import kz.secret_santa_jusan.core.views.TitleBar
-//import kz.secret_santa_jusan.presentation.my_wishlist.MyWishlistScreen
+import kz.secret_santa_jusan.presentation.my_wishlist.MyWishlistScreen
 import kz.secret_santa_jusan.ui.theme.BrightOrange
 import kz.secret_santa_jusan.ui.theme.DarkGray
 import kz.secret_santa_jusan.ui.theme.PaleBlue
@@ -52,11 +52,11 @@ class AddParticipantsScreen : CoreBaseScreen(), Parcelable {
             is NavigationEvent.Default -> {
             }
 
-//            NavigationEvent.GoToCreateOwnCard -> {
-//                navigator.push(
-//                    MyWishlistScreen()
-//                )
-//            }
+            NavigationEvent.GoToCreateOwnCard -> {
+                navigator.push(
+                    MyWishlistScreen()
+                )
+            }
         }
         AddParticipantsContent(viewModel = viewModel)
         viewModel.sendEvent(AddParticipantsEvent.Init)
@@ -131,4 +131,3 @@ fun OrangeOutlineButton(text: String, modifier: Modifier = Modifier, onClick: ()
             .padding(12.dp)
     )
 }
-

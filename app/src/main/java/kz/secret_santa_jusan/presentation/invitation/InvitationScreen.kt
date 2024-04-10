@@ -56,7 +56,6 @@ fun InvitationContent(viewModel: IInvitationViewModel) {
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = PaleBlue)) {
-        // Reuse the TitleBar or create a specific one for this page
         TitleBar()
 
         Image(

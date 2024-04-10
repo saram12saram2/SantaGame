@@ -33,9 +33,10 @@
 	<string name="Пароль">Пароль</string>
 	<string name="Новый_Пароль">Новый пароль</string>
 	<string name="Повторите_пароль">Повторите пароль</string>
-	<string name="invitation">$Organizer invites you to the game</string>
-	<string name="fill_out_the_card">Fill out the card to take part in the game</string>
-	<string name="create_a_participant_card">Create a participant card</string>
+
+	<string name="invitation">Организатор приглашает Вас в игру</string>
+	<string name="fill_out_the_card">Заполните карточку, чтоб принять участие в игре</string>
+	<string name="create_a_participant_card">Создать карточку участника</string>
 
 	<string name="create_game">Создать игру</string>
 	<string name="game_name">Название Игры</string>
@@ -45,5 +46,12 @@
 	<string name="create_your_own_card">Создать свою карточку участника</string>
 	<string name="add_participants_manually">Добавить участников вручную</string>
 	<string name="invite_via_link">Пригласить по ссылке</string>
+
+	<string name="my_wishlist">Пожелания к подарку</string>
+	<string name="my_wishlist_desc">Укажите подарки, которые хотели бы получить</string>
+	<string name="my_wishlist_info">Вы сможете обновить пожелания даже после проведения жеребьевки — Ваш Санта получит об этом уведомление</string>
+	<string name="gift_no">Подарок № %1$d</string>
+	<string name="add_another_gift">Добавить еще подарок</string>
+	<string name="next">Далее</string>
 
 </resources>
