@@ -52,15 +52,12 @@ class MyWishlistScreen : CoreBaseScreen(), Parcelable {
         val viewModel = getScreenModel<MyWishlistViewModel>()
         val navigator = LocalNavigator.currentOrThrow
 
-        // You might want to track navigation events similarly to the MainScreen
-        // ...
 
         val navigationEvent =
             viewModel.navigationEvent.collectAsStateWithLifecycle().value.getValue()
         when (navigationEvent) {
             is NavigationEvent.Default -> {}
             is NavigationEvent.Back -> navigator.pop()
-            //is NavigationEvent.AuthRouter -> navigator.push(ScreenRegistry.get(AuthRouter.ProfileScreen()))
             is NavigationEvent.Default -> {
             }
 
@@ -91,7 +88,6 @@ fun CreateGameContent(viewModel: IMyWishlistViewModel) {
             .fillMaxSize()
             .background(color = PaleBlue)
     ) {
-        // Reuse the TitleBar or create a specific one for this page
         TitleBar()
 
         Column(
@@ -180,8 +176,3 @@ fun CreateGameContent(viewModel: IMyWishlistViewModel) {
 
     }
 }
-
-// Define the view model for the Invitation Screen
-// ...
-
-// Rest of the code structure follows your original MainScreen code.

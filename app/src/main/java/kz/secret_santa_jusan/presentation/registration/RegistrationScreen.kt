@@ -1,13 +1,22 @@
 package kz.secret_santa_jusan.presentation.registration
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Parcelable
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -16,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +38,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.Task
 import kotlinx.coroutines.MainScope
 import kotlinx.parcelize.Parcelize
 import kz.secret_santa_jusan.R
@@ -109,9 +124,32 @@ fun RegistrationContent(viewModel: IRegistrationViewModel) {
     }
 }
 
+fun signInIntent(context: Context): Intent {
+    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken(context.getString(R.string.web_client_id))
+        .requestEmail()
+        .build();
+    val intent = GoogleSignIn.getClient(context, gso)
+    return intent.signInIntent
+}
+
 @Composable
 fun registrationMenu(viewModel: IRegistrationViewModel) {
     val state = viewModel.state.collectAsStateWithLifecycle().value
+    val context = LocalContext.current
+    val startForResult =
+        rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+                if (result.data != null) {
+                    val task: Task<GoogleSignInAccount> =
+                        GoogleSignIn.getSignedInAccountFromIntent(intent)
+                    val email = task.result.email.orEmpty()
+                    viewModel.sendEvent(RegistrationEvent.OnGoogleLogin(email))
+                }
+            }
+        }
+
     Column {
         SsText(
             text = stringResource(id = R.string.Регистрация),
@@ -165,6 +203,7 @@ fun registrationMenu(viewModel: IRegistrationViewModel) {
                 .padding(top = 20.dp),
             colors = ButtonDefaults.buttonColors(LightGrey),
             onClick = {
+                startForResult.launch(signInIntent(context))
             }) {
             Text(
                 stringResource(id = R.string.sign_googe),
@@ -178,10 +217,10 @@ fun registrationMenu(viewModel: IRegistrationViewModel) {
             textFirst = stringResource(id = R.string.Регистрируясь_вы_даете_согласие_на),
             textSecond = stringResource(id = R.string.обработку_персональных_данных)
         )
+        Spacer(modifier = Modifier.weight(1f))
         Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 126.dp)
                 .padding(horizontal = 25.dp),
             colors = ButtonDefaults.buttonColors(BrightOrange),
             onClick = {
@@ -201,6 +240,7 @@ fun registrationMenu(viewModel: IRegistrationViewModel) {
                 viewModel.sendEvent(RegistrationEvent.GoToAuth)
             }
         )
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
@@ -254,7 +294,7 @@ fun EnterText(onClick: (() -> Unit)? = null) {
         modifier = Modifier
             .padding(top = 10.dp)
             .fillMaxWidth(),
-         horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(

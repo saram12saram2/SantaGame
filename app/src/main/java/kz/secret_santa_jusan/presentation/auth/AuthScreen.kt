@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -54,11 +55,11 @@ class AuthScreen : CoreBaseScreen(), Parcelable {
     override fun Content() {
         val viewModel = getScreenModel<AuthViewModel>()
         val navigator = LocalNavigator.currentOrThrow
-        val navigationEvent = viewModel.navigationEvent.collectAsStateWithLifecycle().value.getValue()
-        when(navigationEvent){
+        val navigationEvent =
+            viewModel.navigationEvent.collectAsStateWithLifecycle().value.getValue()
+        when (navigationEvent) {
             is NavigationEvent.Default -> {}
             is NavigationEvent.Back -> navigator.pop()
-            //is NavigationEvent.AuthRouter -> navigator.push(ScreenRegistry.get(AuthRouter.ProfileScreen()))
             NavigationEvent.GoToRecovery -> {
                 navigator.push(
                     PassRecoveryScreen()
@@ -98,11 +99,7 @@ fun ExampleContent(viewModel: IAuthViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
             //.verticalScroll(rememberScrollState())
         ) {
-            when (state) {
-                is AuthState.Default -> {
-                    AuthMenu(viewModel = viewModel)
-                }
-            }
+            AuthMenu(viewModel = viewModel)
         }
     }
 }
@@ -154,11 +151,11 @@ fun AuthMenu(viewModel: IAuthViewModel) {
             fontSize = 10.sp,
             style = TextStyle(textDecoration = TextDecoration.Underline)
         )
+        Spacer(modifier = Modifier.weight(1f))
         Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 126.dp)
-                .padding(horizontal = 25.dp),
+                .padding(horizontal = 24.dp),
             colors = ButtonDefaults.buttonColors(BrightOrange),
             onClick = {
                 viewModel.sendEvent(AuthEvent.ClickEnter)
@@ -174,5 +171,6 @@ fun AuthMenu(viewModel: IAuthViewModel) {
             textFirst = stringResource(id = R.string.Регистрируясь_вы_даете_согласие_на),
             textSecond = stringResource(id = R.string.обработку_персональных_данных)
         )
+        Spacer(modifier = Modifier.weight(1f))
     }
 }

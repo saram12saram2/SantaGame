@@ -5,6 +5,7 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kz.secret_santa_jusan.core.base.CoreBaseViewModel
 import kz.secret_santa_jusan.core.storage.GlobalStorage
@@ -49,12 +50,10 @@ sealed class NavigationEvent{
     object GoToMain:NavigationEvent()
 }
 
-sealed class AuthState(val authForm: AuthModel){
-    class Default(authForm:AuthModel): AuthState(authForm)
-}
+data class AuthState(val authForm: AuthModel)
 
 class AuthViewModelPreview : IAuthViewModel {
-    override val state: StateFlow<AuthState> = MutableStateFlow(AuthState.Default(AuthModel("",""))).asStateFlow()
+    override val state: StateFlow<AuthState> = MutableStateFlow(AuthState(AuthModel("",""))).asStateFlow()
     override val navigationEvent = MutableStateFlow(NavigationEvent.Default()).asStateFlow()
     override fun sendEvent(event: AuthEvent) {}
 }
@@ -63,7 +62,7 @@ class AuthViewModel(
     private val repository: AuthApiRepository
 ): CoreBaseViewModel(), IAuthViewModel {
 
-    private var _state = MutableStateFlow<AuthState>(AuthState.Default(AuthModel("","")))
+    private var _state = MutableStateFlow<AuthState>(AuthState(AuthModel("","")))
     override val state: StateFlow<AuthState> = _state.asStateFlow()
 
 
@@ -93,10 +92,14 @@ class AuthViewModel(
                 }
             }
             is AuthEvent.EnterLogin -> {
-                _state.value = AuthState.Default(state.value.authForm.copy(email = event.text))
+                _state.update {
+                    it.copy(authForm = it.authForm.copy(email = event.text))
+                }
             }
             is AuthEvent.EnterPassword -> {
-                _state.value = AuthState.Default(state.value.authForm.copy(password = event.text))
+                _state.update {
+                    it.copy(authForm = it.authForm.copy(password = event.text))
+                }
             }
 
             AuthEvent.GoToRecovery -> {

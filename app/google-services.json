@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "586200300401",
+    "project_id": "secret-santa-app-kz",
+    "storage_bucket": "secret-santa-app-kz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586200300401:android:d9a27220ac84ec478fd4d0",
+        "android_client_info": {
+          "package_name": "kz.secret_santa_jusan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz9g3JukR2KhI0Ms5UKfzgLsp2jFAIUzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,9 +19,8 @@ class InvitationViewModel : CoreBaseViewModel(), IInvitationViewModel {
                 _navigationEvent.value = NavigationEvent.Back()
             }
             is InvitationEvent.GoToForm -> {
-                _navigationEvent.value = NavigationEvent.GoToRegistration
+                _navigationEvent.value = NavigationEvent.GoToRegistration // Assuming this leads to your form
             }
-
             else -> {}
         }
     }

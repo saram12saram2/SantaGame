@@ -56,6 +56,7 @@ fun InvitationContent(viewModel: IInvitationViewModel) {
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = PaleBlue)) {
+        // Reuse the TitleBar or create a specific one for this page
         TitleBar()
 
         Image(
@@ -97,7 +98,7 @@ fun InvitationContent(viewModel: IInvitationViewModel) {
             colors = ButtonDefaults.buttonColors(BrightOrange)
         ) {
             Text(
-                text = stringResource(id = R.string.create_a_participant_card),
+                text = stringResource(id = R.string.create_a_participant_card), // Button text string resource id
                 fontWeight = FontWeight.Bold,
                 fontSize = 15.sp
             )

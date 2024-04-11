@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.jetbrainsKotlinSerialization)
     id(libs.versions.kotlinParcelize.get())
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -62,6 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle)
+    implementation(libs.play.services.base)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -87,6 +89,8 @@ dependencies {
     implementation(libs.trikita.log)
     implementation(libs.paperdb)
     implementation(libs.koin.core)
+
+    implementation(libs.play.services.auth)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -1,5 +1,6 @@
 <resources>
 	<string name="app_name">secret-santa-jusan</string>
+	<string name="web_client_id">586200300401-neou7077r2i164v1g7ic0dcefg5f8hl9.apps.googleusercontent.com</string>
 	<string name="Зарегистрироваться">Зарегистрироваться</string>
 	<string name="Тайный_Санта">Тайный Санта</string>
 	<string name="Пока_что_Вы_не_участвуете_в_играх">Пока_что_Вы_не_участвуете_в_играх</string>
@@ -53,5 +54,4 @@
 	<string name="gift_no">Подарок № %1$d</string>
 	<string name="add_another_gift">Добавить еще подарок</string>
 	<string name="next">Далее</string>
-
 </resources>

@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -48,13 +49,13 @@ class MainScreen(val isAuth: Boolean) : CoreBaseScreen(), Parcelable {
         when (navigationEvent) {
             is NavigationEvent.Default -> {}
             is NavigationEvent.Back -> navigator.pop()
-            //is NavigationEvent.AuthRouter -> navigator.push(ScreenRegistry.get(AuthRouter.ProfileScreen()))
             NavigationEvent.GoToRegistration -> {
                 navigator.push(
                     RegistrationScreen(
                     )
                 )
             }
+
             NavigationEvent.GoToCreateGame -> {
                 navigator.push(
                     CreateGameScreen()
@@ -107,16 +108,16 @@ fun notRegistration(
     viewModel: IMainViewModel
 ) {
     Column {
+        Spacer(modifier = Modifier.weight(1f))
         Image(
             modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 64.dp),
+                .align(Alignment.CenterHorizontally),
             painter = painterResource(id = R.drawable.santa03),
             contentDescription = null,
         )
         SsText(
             modifier = Modifier
-                .padding(top = 27.dp)
+                .padding(top = 24.dp)
                 .fillMaxWidth(),
             text = stringResource(id = R.string.Тайный_Санта),
             color = DarkGray,
@@ -134,7 +135,6 @@ fun notRegistration(
         Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 27.dp)
                 .padding(horizontal = 25.dp),
             colors = ButtonDefaults.buttonColors(BrightOrange),
             onClick = {
@@ -147,6 +147,7 @@ fun notRegistration(
                 fontSize = 15.sp
             )
         }
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
@@ -155,16 +156,16 @@ fun haveRegistration(
     viewModel: IMainViewModel
 ) {
     Column {
+        Spacer(modifier = Modifier.weight(1f))
         Image(
             modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 64.dp),
+                .align(Alignment.CenterHorizontally),
             painter = painterResource(id = R.drawable.santa03),
             contentDescription = null,
         )
         SsText(
             modifier = Modifier
-                .padding(top = 27.dp)
+                .padding(top = 24.dp)
                 .fillMaxWidth(),
             text = stringResource(id = R.string.Тайный_Санта),
             color = DarkGray,
@@ -182,7 +183,6 @@ fun haveRegistration(
         Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 27.dp)
                 .padding(horizontal = 25.dp),
             colors = ButtonDefaults.buttonColors(BrightOrange),
             onClick = {

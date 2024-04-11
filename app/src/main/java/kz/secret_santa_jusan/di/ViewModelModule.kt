@@ -15,7 +15,7 @@ val featureExampleViewModel = module {
 }
 
 val featureRegisterViewModel = module {
-    factory { RegistrationViewModel(get()) }
+    factory { RegistrationViewModel(get(), get()) }
 }
 
 val featureMainViewModel = module {
